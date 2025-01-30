@@ -11,7 +11,6 @@ import { Subscription } from 'rxjs';
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
     WorkoutFormComponent,
     WorkoutListComponent,
     WorkoutChartComponent,
