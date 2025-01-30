@@ -1,0 +1,50 @@
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "workouts": [
+        { "type": "Running", "minutes": 30 },
+        { "type": "Cycling", "minutes": 45 }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "workouts": [
+        { "type": "Swimming", "minutes": 60 },
+        { "type": "Running", "minutes": 20 }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Mike Johnson",
+      "workouts": [
+        { "type": "Yoga", "minutes": 50 },
+        { "type": "Cycling", "minutes": 40 }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Alice Brown",
+      "workouts": [
+        { "type": "Pilates", "minutes": 35 },
+        { "type": "Swimming", "minutes": 25 }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Bob Williams",
+      "workouts": [
+        { "type": "Running", "minutes": 40 },
+        { "type": "Yoga", "minutes": 30 }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Charlie Davis",
+      "workouts": [
+        { "type": "Cycling", "minutes": 20 },
+        { "type": "Pilates", "minutes": 55 }
+      ]
+    }
+  ]

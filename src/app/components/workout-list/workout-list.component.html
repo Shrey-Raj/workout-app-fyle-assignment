@@ -1,0 +1,81 @@
+<div class="max-w-6xl mx-auto p-4">
+    <nz-card class="shadow-lg rounded-lg">
+      <!-- Header -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-medium text-gray-800 mb-2">Workout History</h2>
+        <p class="text-gray-500">View and manage workout records</p>
+        <nz-divider></nz-divider>
+      </div>
+  
+      <!-- Search & Filter Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div>
+          <nz-input-group [nzPrefix]="searchPrefix">
+            <input 
+              nz-input 
+              [(ngModel)]="searchName" 
+              (ngModelChange)="filterData()"
+              placeholder="Search by username"
+              class="rounded-lg" />
+          </nz-input-group>
+          <ng-template #searchPrefix>
+            <span nz-icon nzType="search" class="text-gray-400"></span>
+          </ng-template>
+        </div>
+  
+        <nz-select
+          [(ngModel)]="selectedWorkoutType"
+          (ngModelChange)="filterData()"
+          nzPlaceHolder="Filter by workout type"
+          class="w-full rounded-lg">
+          <nz-option nzValue="" nzLabel="All Workouts"></nz-option>
+          <nz-option *ngFor="let type of workoutTypes" [nzValue]="type" [nzLabel]="type"></nz-option>
+        </nz-select>
+      </div>
+  
+      <!-- Table -->
+      <nz-table
+        #basicTable
+        [nzData]="filteredData"
+        [nzPageSize]="pageSize"
+        [nzPageIndex]="pageIndex"
+        [nzTotal]="filteredData.length"
+        (nzPageIndexChange)="pageIndex = $event"
+        class="bg-white rounded-lg overflow-hidden">
+        <thead>
+          <tr class="bg-gray-50">
+            <th class="font-medium">User Name</th>
+            <th class="font-medium">Workout Type</th>
+            <th class="font-medium">Duration</th>
+            <th class="font-medium text-right">Total Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of basicTable.data">
+            <td>{{ user.name }}</td>
+            <td>
+              <div class="flex flex-wrap gap-2">
+                <nz-tag 
+                  *ngFor="let workout of user.workouts"
+                  [nzColor]="'orange'"
+                  class="rounded-full">
+                  {{ workout.type }}
+                </nz-tag>
+              </div>
+            </td>
+            <td>
+              <div class="space-y-1">
+                <div *ngFor="let workout of user.workouts" class="text-gray-600">
+                  {{ workout.minutes }} minutes
+                </div>
+              </div>
+            </td>
+
+            <td class="text-left font-medium text-gray-800">
+                {{ calculateTotalDuration(user) }} minutes
+              </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-card>
+  </div>
