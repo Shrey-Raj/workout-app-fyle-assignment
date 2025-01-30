@@ -25,7 +25,7 @@ Welcome to **Fittrack Pro**, an Angular 19+ single-page application (SPA) design
 
 
 ### Demo Video
-
+<video src="https://github.com/user-attachments/assets/4bdb5ed6-db7f-47f4-ab10-6bccfab3715b"></video>
 
 ---
 

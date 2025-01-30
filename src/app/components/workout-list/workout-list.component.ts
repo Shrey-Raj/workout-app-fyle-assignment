@@ -41,7 +41,7 @@ export class WorkoutListComponent implements OnChanges {
   }
   
 
-  workoutTypes = ['Running', 'Cycling', 'Swimming', 'Yoga', 'Pilates'];
+  workoutTypes = ['Running', 'Cycling', 'Swimming', 'Yoga', 'Weight Training','HIIT', 'Walking'];
  
   searchName: string = '';
   selectedWorkoutType: string = '';
