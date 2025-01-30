@@ -11,9 +11,11 @@
         <!-- Navigation -->
         <nav class="hidden md:flex items-center space-x-8">
           <ng-container *ngFor="let item of navigationItems">
-            <a [routerLink]="item.route" 
-               routerLinkActive="text-orange-500"
-               class="flex items-center space-x-2 px-3 py-2 rounded-lg text-gray-600 hover:text-orange-500 hover:bg-orange-50 transition-colors">
+            <!-- Use href for anchor link, remove routerLink -->
+            <a 
+              href="{{ item.route }}" 
+              (click)="scrollToSection($event, item.route)" 
+              class="flex items-center space-x-2 px-3 py-2 rounded-lg text-gray-600 hover:text-orange-500 hover:bg-orange-50 transition-colors">
               <span nz-icon [nzType]="item.icon" nzTheme="outline"></span>
               <span>{{ item.label }}</span>
             </a>
