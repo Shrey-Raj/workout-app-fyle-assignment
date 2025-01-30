@@ -32,7 +32,7 @@ export class WorkoutListComponent implements OnChanges {
   
   ngOnChanges(changes: SimpleChanges) {
     if (changes['userData'] && changes['userData'].currentValue) {
-      // Unwrap the nested array
+      
       this.filteredData = Array.isArray(changes['userData'].currentValue[0]) 
         ? [...changes['userData'].currentValue[0]]
         : [...changes['userData'].currentValue];
@@ -40,7 +40,6 @@ export class WorkoutListComponent implements OnChanges {
     }
   }
   
-  // userData = LocalStorageService.getUserData() || [];
 
   workoutTypes = ['Running', 'Cycling', 'Swimming', 'Yoga', 'Pilates'];
  
@@ -55,11 +54,10 @@ export class WorkoutListComponent implements OnChanges {
       user?.name.toLowerCase().includes(this.searchName.toLowerCase()) &&
       (this.selectedWorkoutType ? user?.workouts.some((w:any) => w.type === this.selectedWorkoutType) : true)
     );
-    this.pageIndex = 1; // Reset to first page when filtering
+    this.pageIndex = 1; 
   }
 
   calculateTotalDuration(user: any): number {
     return user?.workouts?.reduce((total: number, workout: any) => total + (workout?.minutes || 0), 0) || 0;
   }
-
 }

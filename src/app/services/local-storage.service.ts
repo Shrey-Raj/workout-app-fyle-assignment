@@ -10,12 +10,10 @@ export class LocalStorageService {
   private userDataSubject = new BehaviorSubject<any[]>([]);
 
   constructor() {
-    // Initialize with data from localStorage when the service is first created
     const data = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
     this.userDataSubject.next(data);
   }
 
-  // Method to get the current user data as an observable
   getUserDataObservable() {
     return this.userDataSubject.asObservable();
   }
@@ -23,32 +21,52 @@ export class LocalStorageService {
   addUserData(userData: { id: number; name: string; workouts: { type: string; minutes: number }[] }) {
     let existingData = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
 
-    console.log("existing data = " , existingData) ; 
+    // console.log("existing data = " , existingData) ; 
 
     const existingUserIndex = existingData.findIndex((user:any) => user.name === userData.name);
 
+    // console.log("existing user index : " , existingUserIndex) ; 
+
     if (existingUserIndex === -1) {
-      existingData.unshift(userData); //add to front
+      existingData.unshift(userData); 
     } else {
-      existingData[existingUserIndex] = userData;
+
+      // let previousData = existingData[existingUserIndex] ; 
+      // previousData.workouts.push(...userData.workouts);
+
+      // console.log("Updated previous data = " , previousData); 
+
+      // existingData[existingUserIndex] = previousData;
+
+
+      let previousData = existingData[existingUserIndex];
+    
+    // Avoid duplicating workouts by ensuring each workout is unique
+    userData.workouts.forEach(workout => {
+      const existingWorkout = previousData.workouts.find((w: any) => w.type === workout.type && w.minutes === workout.minutes);
+      if (!existingWorkout) {
+        previousData.workouts.push(workout);
+      }
+    });
+
+    existingData[existingUserIndex] = previousData;
+
     }
 
-    console.log("new existing data  = " , existingData) ; 
+    // console.log("new existing data  = " , existingData) ; 
 
     localStorage.setItem(this.storageKey, JSON.stringify(existingData));
 
-    // Emit the updated user data
     this.userDataSubject.next(existingData);
   }
 
   setSampleData() {
     let userData = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
     if (userData.length === 0) {
-      userData.push(sampleUserData);
+      userData = sampleUserData;
     }
     localStorage.setItem(this.storageKey, JSON.stringify(userData));
 
-    // Emit the updated user data
     this.userDataSubject.next(userData);
   }
 }

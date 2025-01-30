@@ -16,19 +16,18 @@ export class WorkoutChartComponent implements OnChanges, OnInit, AfterViewInit {
 
   ngOnInit() {
     if (this.userData.length > 0) {
-      this.selectedUser = this.userData[0]; // Set the first user initially
+      this.selectedUser = this.userData[0]; 
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['userData'] && changes['userData'].currentValue.length > 0) {
-      this.selectedUser = this.userData[0]; // Set first user when data is received
+      this.selectedUser = this.userData[0]; 
       this.createChart();
     }
   }
 
   ngAfterViewInit() {
-    // Ensures the chart is created after the view initializes
     setTimeout(() => {
       if (this.selectedUser) {
         this.createChart();
@@ -48,7 +47,7 @@ export class WorkoutChartComponent implements OnChanges, OnInit, AfterViewInit {
     if (!this.selectedUser || !this.selectedUser.workouts) return;
 
     const ctx = document.getElementById('workoutChart') as HTMLCanvasElement;
-    if (!ctx) return; // Ensure canvas exists
+    if (!ctx) return; 
 
     if (this.chart) {
       this.chart.destroy();

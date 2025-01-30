@@ -48,7 +48,7 @@ export class WorkoutFormComponent {
   onSubmit() {
     if (this.name && this.selectedWorkouts.length > 0) {
       const userData = {
-        id: Date.now(), // generate a unique ID for each user
+        id: Date.now(),
         name: this.name,
         workouts: this.selectedWorkouts
       };
@@ -58,8 +58,12 @@ export class WorkoutFormComponent {
   }
 
   addWorkout() {
+
+    console.log("Inside the addWorkout with data : " , this.workoutType , " & " , this.minutes , "\n");
+
     if (this.workoutType && this.minutes > 0) {
       this.selectedWorkouts.push({ type: this.workoutType, minutes: this.minutes });
+      console.log("selected workouts = " , this.selectedWorkouts);
       this.workoutType = '';
       this.minutes = 0;
     }

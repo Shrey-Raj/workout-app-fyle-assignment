@@ -1,59 +1,147 @@
-# WorkoutApp
+# Fittrack Pro (Assignment from Fyle)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+Welcome to **Fittrack Pro**, an Angular 19+ single-page application (SPA) designed to help users track their workouts, stay motivated, and manage their progress!
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **User Data Input**: Users can add their name, workout type, and workout minutes.
+- **User Workout List**: The list of workouts is displayed with options to:
+  - **Search by name**
+  - **Filter by workout type**
+  - **Pagination** (if there are more than 5 users)
+- **Workout Progress Visualization**: Optional feature to visualize workout progress using charts.
 
-```bash
-ng serve
+### Screenshots
+
+#### Add New Workout:
+![Screenshot add workout](https://github.com/user-attachments/assets/93ea6e09-660d-4240-8ce0-fa8aed44875f)
+
+#### Workout List (Search, Filter, and Pagination):
+![Screenshot 2024-06-26 at 7.03.56 PM.png](https://github.com/user-attachments/assets/884255b1-6cbc-4824-b3dd-b0f4c55beb3e)
+![Screenshot 2024-06-26 at 7.03.56 PM.png](https://github.com/user-attachments/assets/1770174e-5605-452f-8ffb-adbcf0c636fe)
+
+#### Workout Progress (Charts):
+![Screenshot 2024-06-26 at 7.04.49 PM.png](https://github.com/user-attachments/assets/c6992564-7d2c-48f1-8616-b575be99c09f)
+
+
+### Demo Video
+
+
+---
+
+## References & Functionalities
+
+- Input fields to **add the user**, **workout type**, and **minutes** with a **button**.
+- Display users as a **table grid**.
+- **Search** by username and **filter** by workout type.
+- Store the data using **localStorage**.
+- Initally the app has the following data stored in local storage :
+
+```jsx
+userData = [
+    {
+      id: 1,
+      name: 'John Doe',
+      workouts: [
+        { type: 'Running', minutes: 30 },
+        { type: 'Cycling', minutes: 45 }
+      ]
+    },
+    {
+      id: 2,
+      name: 'Jane Smith',
+      workouts: [
+        { type: 'Swimming', minutes: 60 },
+        { type: 'Running', minutes: 20 }
+      ]
+    },
+    {
+      id: 3,
+      name: 'Mike Johnson',
+      workouts: [
+        { type: 'Yoga', minutes: 50 },
+        { type: 'Cycling', minutes: 40 }
+      ]
+    },
+    ...3 more such objects
+]
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## **Steps to Run the Project Locally**
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1. Clone the repository to your local machine:
 
 ```bash
-ng generate --help
+git clone https://github.com/Shrey-Raj/workout-app-fyle-assignment.git
 ```
 
-## Building
-
-To build the project run:
+2. Navigate to the project directory:
 
 ```bash
-ng build
+cd workout-app-fyle-assignment
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+3. Install the dependencies:
 
 ```bash
-ng test
+npm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+4. Run the application:
 
 ```bash
-ng e2e
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+5. Open your browser and navigate to `http://localhost:4200` to view the app.
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## **Assumptions**
+
+The user has to choose from the below set of workouts only : 
+
+- 'Running',
+- 'Cycling',
+- 'Swimming',
+- 'Weight Training',
+- 'Yoga',
+- 'HIIT',
+- 'Walking',
+
+---
+
+## **Live Application**
+
+The **Fittrack Pro** app is hosted on Netlify and can be accessed at:  
+[Fittrack Pro - Live App](https://fittrack-pro-fyle.netlify.app/)
+
+---
+
+## **Code Coverage(100%)**
+
+The code coverage for unit tests is **100%**, and the detailed code coverage report is attached below:
+
+- For the **workout-list** component
+![Code Coverage Screenshot](https://github.com/user-attachments/assets/7277e4cf-fca1-48c6-9b1b-b626f5553228)
+
+- For the **local-storage** service
+![Code Coverage Screenshot](https://github.com/user-attachments/assets/4f321e95-7916-4373-9e71-d67035a7031c)
+
+---
+
+## **Libraries Used**
+
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Ng-Zorro](https://ng.ant.design/)
+- [Chart.js](https://www.chartjs.org/)
+
+---
+
+## **Design Notes**
+
+- The design is flexible, and modifications were made to ensure better functionality and appearance.
+

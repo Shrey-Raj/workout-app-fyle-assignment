@@ -22,15 +22,13 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'workout-app';
   userData: any[] = [];
-  private userDataSubscription!: Subscription;  // Use definite assignment assertion
+  private userDataSubscription!: Subscription;  
 
   constructor(private localStorageService: LocalStorageService) {}
 
   ngOnInit() {
-    // Set the sample data if it's not available
     this.localStorageService.setSampleData();
 
-    // Subscribe to the user data observable to listen for changes
     this.userDataSubscription = this.localStorageService.getUserDataObservable().subscribe((data) => {
       this.userData = Array.isArray(data[0]) ? data[0] : data;
       console.log('User Data:', this.userData);  
@@ -38,7 +36,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // Unsubscribe from the observable to prevent memory leaks
     this.userDataSubscription.unsubscribe();
   }
 }
